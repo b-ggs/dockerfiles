@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+args="$@"
+
+if [ "$args" = "--help" ] || [ "$args" = "-h" ]; then
+  wal $args
+else
+  wal -q $args
+  cat "$HOME/.cache/wal/$OUTPUT_FILE"
+fi
