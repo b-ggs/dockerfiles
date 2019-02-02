@@ -1,8 +1,14 @@
-FROM python:3.7-alpine
+FROM python:3.7.2-stretch
 
-RUN apk update && apk add ffmpeg
+ENV CACHE_BUSTER=2019-02-03
+
+RUN apt-get update && \
+      apt-get install -y --no-install-recommends ffmpeg && \
+      rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install youtube-dl
+
+ADD youtube-dl.conf /etc/
 
 WORKDIR /data
 
