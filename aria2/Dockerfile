@@ -1,8 +1,6 @@
-FROM debian:stretch
+FROM alpine
 
-RUN apt-get update && \
-      apt-get install -y aria2 && \
-      rm -rf /var/lib/apt/lists/*
+RUN apk --no-cache add aria2
 
 WORKDIR /data
 

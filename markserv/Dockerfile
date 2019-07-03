@@ -1,10 +1,7 @@
-FROM node:8.15.0-stretch
+FROM node:8.16.0-alpine
 
-ENV CACHE_BUSTER=2019-01-29
-
-RUN npm install -g markserv
-
-RUN mkdir -p /data
+RUN npm config set unsafe-perm true \
+  && npm install -g markserv
 
 WORKDIR /data
 

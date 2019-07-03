@@ -1,6 +1,7 @@
-FROM node:8.15.0-stretch
+FROM node:8.16.0-alpine
 
-RUN npm install -g md-to-pdf@2.6.4
+RUN npm config set unsafe-perm true \
+  && npm install -g md-to-pdf
 
 WORKDIR /data
 

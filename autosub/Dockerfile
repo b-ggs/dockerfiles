@@ -1,8 +1,7 @@
 FROM python:2.7-alpine
 
-RUN apk update && apk add ffmpeg
-
-RUN pip install autosub
+RUN apk --no-cache add ffmpeg \
+  && pip install autosub
 
 WORKDIR /data
 

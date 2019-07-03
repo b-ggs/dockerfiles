@@ -1,8 +1,7 @@
 FROM python:3.7-alpine
 
-RUN apk update && apk add imagemagick
-
-RUN pip3 install pywal
+RUN apk --no-cache add imagemagick \
+  && pip3 install pywal
 
 ENV OUTPUT_FILE=colors.Xresources
 
