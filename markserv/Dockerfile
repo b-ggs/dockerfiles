@@ -5,6 +5,9 @@ RUN npm config set unsafe-perm true \
 
 WORKDIR /data
 
+EXPOSE 8642
+EXPOSE 35729
+
 ENTRYPOINT ["markserv"]
 
-CMD ["-a", "0.0.0.0", "-b", "false", ".", "-v"]
+CMD ["-a", "0.0.0.0", "-b", "false", "--livereloadport", "35729", ".", "-v"]
