@@ -1,4 +1,4 @@
-FROM python:2.7-alpine
+FROM python:alpine
 
 RUN apk --no-cache add ffmpeg \
   && pip install autosub
