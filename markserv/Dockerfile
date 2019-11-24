@@ -1,4 +1,4 @@
-FROM node:8.16.0-alpine
+FROM node:lts-alpine
 
 RUN npm config set unsafe-perm true \
   && npm install -g markserv

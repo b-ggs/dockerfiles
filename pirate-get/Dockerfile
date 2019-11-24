@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:alpine
 
 RUN pip3 install pirate-get
 

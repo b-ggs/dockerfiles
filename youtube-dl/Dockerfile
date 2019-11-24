@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:alpine
 
 RUN apk --no-cache add ffmpeg \
   && pip3 install youtube-dl
