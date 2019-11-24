@@ -1,5 +1,9 @@
 language: generic
 
+arch:
+  - amd64
+  - arm64
+
 env:
   global:
     - DOCKER_USERNAME=bxggs
