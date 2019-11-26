@@ -2,7 +2,6 @@ language: generic
 
 arch:
   - amd64
-  - arm64
 
 env:
   global:
