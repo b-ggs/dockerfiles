@@ -16,6 +16,7 @@ env:
     - DOCKER_IMAGE=pirate-get RELATIVE_PATH=pirate-get
     - DOCKER_IMAGE=pywal RELATIVE_PATH=pywal
     - DOCKER_IMAGE=youtube-dl RELATIVE_PATH=youtube-dl
+    - DOCKER_IMAGE=tcd RELATIVE_PATH=tcd
 
 services:
   - docker
