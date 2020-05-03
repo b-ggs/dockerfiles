@@ -13,6 +13,7 @@ env:
     - DOCKER_IMAGE=markserv RELATIVE_PATH=markserv
     - DOCKER_IMAGE=md-to-pdf RELATIVE_PATH=md-to-pdf
     - DOCKER_IMAGE=openssl RELATIVE_PATH=openssl
+    - DOCKER_IMAGE=qrencode RELATIVE_PATH=qrencode
     - DOCKER_IMAGE=pirate-get RELATIVE_PATH=pirate-get
     - DOCKER_IMAGE=pywal RELATIVE_PATH=pywal
     - DOCKER_IMAGE=youtube-dl RELATIVE_PATH=youtube-dl
