@@ -3,6 +3,6 @@ server {
   server_name ${SERVER_NAME};
   root ${ROOT_DIR};
   autoindex on;
-  fandyindex on;
+  fancyindex on;
   fancyindex_exact_size off;
 }
