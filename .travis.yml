@@ -18,6 +18,7 @@ env:
     - DOCKER_IMAGE=pywal RELATIVE_PATH=pywal
     - DOCKER_IMAGE=youtube-dl RELATIVE_PATH=youtube-dl
     - DOCKER_IMAGE=tcd RELATIVE_PATH=tcd
+    - DOCKER_IMAGE=nginx-autoindex RELATIVE_PATH=nginx-autoindex
 
 services:
   - docker
