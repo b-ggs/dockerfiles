@@ -25,6 +25,9 @@ jobs:
           - qrencode
           - tcd
           - youtube-dl
+        include:
+          - image: md-to-pdf
+            platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,7 +35,7 @@ jobs:
         id: setup_docker_buildx_args
         run: |
           DOCKER_IMAGE=bxggs/${{ matrix.image }}
-          DOCKER_PLATFORMS=linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
+          DOCKER_PLATFORMS=${${{ matrix.platforms }}:-linux/amd64,linux/arm64/v8,linux/arm64,linux/arm/v6,linux/arm/v7}
           RELATIVE_PATH=${{ matrix.image }}
 
           BRANCH=${GITHUB_REF#refs/heads/}
