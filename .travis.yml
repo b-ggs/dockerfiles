@@ -1,12 +1,10 @@
 language: generic
 
-arch:
-  - amd64
-
 env:
   global:
     - DOCKER_USERNAME=bxggs
     - DEFAULT_DOCKER_TAG=latest
+    - DOCKER_CLI_EXPERIMENTAL=enabled
   jobs:
     - DOCKER_IMAGE=aria2 RELATIVE_PATH=aria2
     - DOCKER_IMAGE=autosub RELATIVE_PATH=autosub
@@ -23,7 +21,14 @@ env:
 services:
   - docker
 
+before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt update
+  - sudo apt -y -o Dpkg::Options::="--force-confnew" install docker-ce
+
 before_script:
+  - echo $(docker buildx version)
   - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
       export DOCKER_TAG=$DEFAULT_DOCKER_TAG;
     else
