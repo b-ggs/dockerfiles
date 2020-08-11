@@ -1,0 +1,55 @@
+name: buildx
+
+on:
+  schedule:
+    - cron: 0 0 * * *
+  push:
+    branches:
+      - "*"
+
+jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - aria2
+          - autosub
+          - markserv
+          - md-to-pdf
+          - nginx-autoindex
+          - openssl
+          - pirate-get
+          - pywal
+          - qrencode
+          - tcd
+          - youtube-dl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx args
+        id: setup_docker_buildx_args
+        run: |
+          DOCKER_IMAGE=bxggs/${{ matrix.image }}
+          DOCKER_PLATFORMS=linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
+          RELATIVE_PATH=${{ matrix.image }}
+
+          BRANCH=${GITHUB_REF#refs/heads/}
+
+          if [[ "$BRANCH" == "master" ]]; then
+            DOCKER_TAG=latest
+          else
+            DOCKER_TAG=$BRANCH
+          fi
+
+          BUILDX_ARGS="-t \"$DOCKER_IMAGE:$DOCKER_TAG\" --platform \"$DOCKER_PLATFORMS\" \"$RELATIVE_PATH\""
+
+          echo "::set-output name=buildx_args::$BUILDX_ARGS"
+      - name: Setup Docker Buildx
+        uses: crazy-max/ghaction-docker-buildx@v3
+      - name: Build Docker images
+        run: docker buildx build --output "type=image,push=false" ${{ steps.setup_docker_buildx_args.outputs.buildx_args }}
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      - name: Push Docker images
+        run: docker buildx build --output "type=image,push=true" ${{ steps.setup_docker_buildx_args.outputs.buildx_args }}
