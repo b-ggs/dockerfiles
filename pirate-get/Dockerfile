@@ -1,6 +1,6 @@
 FROM python:alpine
 
-RUN pip3 install pirate-get
+RUN pip3 install --no-cache-dir pirate-get
 
 WORKDIR /data
 

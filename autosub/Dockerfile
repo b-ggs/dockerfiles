@@ -1,7 +1,7 @@
 FROM python:alpine
 
 RUN apk --no-cache add ffmpeg \
-  && pip install autosub
+  && pip3 install --no-cache-dir autosub
 
 WORKDIR /data
 

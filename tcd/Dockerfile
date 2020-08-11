@@ -1,6 +1,6 @@
 FROM python:alpine
 
-RUN pip3 install tcd
+RUN pip3 install --no-cache-dir tcd
 
 COPY entrypoint /entrypoint
 
