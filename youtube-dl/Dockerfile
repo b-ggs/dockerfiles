@@ -7,6 +7,8 @@ ADD youtube-dl.conf /etc/
 
 WORKDIR /data
 
+VOLUME /data
+
 ENTRYPOINT ["youtube-dl"]
 
 CMD ["--help"]

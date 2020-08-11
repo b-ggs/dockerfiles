@@ -5,6 +5,8 @@ RUN apk --no-cache add ffmpeg \
 
 WORKDIR /data
 
+VOLUME /data
+
 ENTRYPOINT ["autosub"]
 
 CMD ["-h"]

@@ -6,6 +6,8 @@ COPY entrypoint /entrypoint
 
 WORKDIR /data
 
+VOLUME /data
+
 ENTRYPOINT ["/entrypoint"]
 
 CMD ["--help"]
