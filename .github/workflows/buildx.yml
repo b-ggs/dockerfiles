@@ -25,6 +25,7 @@ jobs:
           - qrencode
           - tcd
           - youtube-dl
+          - youtube-dl-git
         include:
           - image: md-to-pdf
             platforms: linux/amd64
