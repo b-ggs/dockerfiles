@@ -19,7 +19,6 @@ jobs:
           - markserv
           - md-to-pdf
           - nginx-autoindex
-          - openssl
           - pirate-get
           - pywal
           - qrencode
