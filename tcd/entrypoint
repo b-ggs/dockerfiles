@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-args="$@"
-
-if [ "$args" = "--help" ] || [ "$args" = "-h" ]; then
-  tcd $args
-else
-  tcd --format irc $args
-fi

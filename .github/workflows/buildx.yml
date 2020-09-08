@@ -15,14 +15,8 @@ jobs:
       matrix:
         image:
           - aria2
-          - autosub
-          - markserv
-          - md-to-pdf
           - nginx-autoindex
-          - pirate-get
           - pywal
-          - qrencode
-          - tcd
           - youtube-dl
           - youtube-dl-git
         include:
