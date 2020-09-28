@@ -19,6 +19,7 @@ jobs:
           - pywal
           - streamlink
           - streamlink-git
+          - tcd
           - youtube-dl
           - youtube-dl-git
     steps:
