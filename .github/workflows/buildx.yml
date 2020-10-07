@@ -37,7 +37,7 @@ jobs:
           if [[ "$BRANCH" == "master" ]]; then
             DOCKER_TAG=latest
           else
-            DOCKER_TAG=$BRANCH
+            DOCKER_TAG="$(echo $BRANCH | sed -e 's/\\//-/g')"
           fi
 
           echo "::set-output name=context_path::$DOCKER_CONTEXT_PATH"
