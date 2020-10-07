@@ -32,6 +32,8 @@ jobs:
           DOCKER_CONTEXT_PATH=${{ matrix.image }}
           DOCKERFILE_PATH=./Dockerfile
 
+          BRANCH=${GITHUB_REF#refs/heads/}
+
           if [[ "$BRANCH" == "master" ]]; then
             DOCKER_TAG=latest
           else
