@@ -25,15 +25,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Docker Buildx args
-        id: setup_docker_buildx_args
+      - name: Set up Docker args
+        id: docker_args
         run: |
           DOCKER_IMAGE=bxggs/${{ matrix.image }}
-          DOCKER_PLATFORMS=${{ matrix.platforms }}
-          DOCKER_PLATFORMS=${DOCKER_PLATFORMS:-linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7}
-          RELATIVE_PATH=${{ matrix.image }}
-
-          BRANCH=${GITHUB_REF#refs/heads/}
+          DOCKER_CONTEXT_PATH=${{ matrix.image }}
+          DOCKERFILE_PATH=./Dockerfile
 
           if [[ "$BRANCH" == "master" ]]; then
             DOCKER_TAG=latest
@@ -41,13 +38,9 @@ jobs:
             DOCKER_TAG=$BRANCH
           fi
 
-          BUILDX_ARGS="-t \"$DOCKER_IMAGE:$DOCKER_TAG\" --platform \"$DOCKER_PLATFORMS\" \"$RELATIVE_PATH\""
-
-          echo "::set-output name=buildx_args::$BUILDX_ARGS"
-      # - name: Setup Docker Buildx
-      #   uses: crazy-max/ghaction-docker-buildx@v3
-      # - name: Build Docker images
-      #   run: docker buildx build --output "type=image,push=false" ${{ steps.setup_docker_buildx_args.outputs.buildx_args }}
+         echo "::set-output name=context_path::$DOCKER_CONTEXT_PATH"
+         echo "::set-output name=dockerfile_path::$DOCKERFILE_PATH"
+         echo "::set-output name=tag::$DOCKER_IMAGE:$DOCKER_TAG"
       - name: Set up QEMU
         id: qemu
         uses: docker/setup-qemu-action@v1
@@ -59,12 +52,16 @@ jobs:
         uses: docker/setup-buildx-action@v1
         with:
           version: latest
-      - name: Available platforms
-        run: echo ${{ steps.buildx.outputs.platforms }}
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      # - name: Push Docker images
-      #   run: docker buildx build --output "type=image,push=true" ${{ steps.setup_docker_buildx_args.outputs.buildx_args }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: ${{ steps.docker_args.context_path }}
+          file: ${{ steps.docker_args.dockerfile_path }}
+          platforms: ${{ steps.buildx.outputs.platforms }}
+          push: true
+          tags: ${{ steps.docker_args.tag }}
