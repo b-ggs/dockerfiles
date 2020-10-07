@@ -29,7 +29,7 @@ jobs:
         id: docker_args
         run: |
           DOCKER_IMAGE=bxggs/${{ matrix.image }}
-          DOCKER_CONTEXT_PATH=${{ matrix.image }}
+          DOCKER_CONTEXT_PATH=./${{ matrix.image }}
           DOCKERFILE_PATH=./Dockerfile
 
           BRANCH=${GITHUB_REF#refs/heads/}
