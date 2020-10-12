@@ -15,6 +15,7 @@ jobs:
       matrix:
         image:
           - aria2
+          - mopidy
           - nginx-autoindex
           - pywal
           - streamlink
