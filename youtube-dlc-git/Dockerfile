@@ -12,6 +12,6 @@ WORKDIR /data
 
 VOLUME /data
 
-ENTRYPOINT ["youtube-dl"]
+ENTRYPOINT ["youtube-dlc"]
 
 CMD ["--help"]
