@@ -23,6 +23,7 @@ jobs:
           - tcd
           - youtube-dl
           - youtube-dl-git
+          - youtube-dlc-git
     steps:
       - name: Checkout
         uses: actions/checkout@v2
