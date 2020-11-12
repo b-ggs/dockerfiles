@@ -1,8 +1,7 @@
 FROM python:alpine
 
 RUN apk --no-cache add ffmpeg git \
-  && git clone https://github.com/blackjack4494/youtube-dlc /tmp/youtube-dl \
-  && pip install --no-cache-dir /tmp/youtube-dl \
+  && pip install --no-cache-dir git+https://github.com/blackjack4494/yt-dlc \
   && apk del git \
   && rm -rf /tmp/*
 
