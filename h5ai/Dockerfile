@@ -17,6 +17,7 @@ RUN apk -U add \
     wget \
     unzip \
     patch \
+    ffmpeg \
   && mkdir -p /var/www \
   && wget "http://release.larsjung.de/h5ai/h5ai-$H5AI_VERSION.zip" \
   && mkdir -p /usr/share/h5ai \
