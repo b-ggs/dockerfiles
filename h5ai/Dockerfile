@@ -18,7 +18,7 @@ RUN apk -U add \
     unzip \
     patch \
     ffmpeg \
-  && mkdir -p /var/www \
+  && mkdir -p /data \
   && wget "http://release.larsjung.de/h5ai/h5ai-$H5AI_VERSION.zip" \
   && mkdir -p /usr/share/h5ai \
   && unzip "h5ai-$H5AI_VERSION.zip" -d /usr/share/h5ai
@@ -30,5 +30,5 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY startup /usr/local/bin/startup
 
 EXPOSE 80
-VOLUME ["/var/www"]
+VOLUME ["/data"]
 CMD ["/sbin/tini", "--", "startup"]
