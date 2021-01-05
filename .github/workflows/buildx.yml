@@ -15,6 +15,7 @@ jobs:
       matrix:
         image:
           - aria2
+          - justlog-git
           - h5ai
           - mopidy
           - nginx-autoindex
