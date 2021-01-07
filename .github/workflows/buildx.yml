@@ -18,6 +18,9 @@ jobs:
           - justlog-git
           - h5ai
           - mopidy
+          - orl-bot
+          - orl-logger
+          - orl-server
           - nginx-autoindex
           - pywal
           - streamlink
