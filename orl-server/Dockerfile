@@ -1,6 +1,8 @@
 FROM golang:latest AS build-env
 RUN git clone https://github.com/b-ggs/overrustlelogs.git /tmp/orl
 RUN mv /tmp/orl/server /src
+ENV CGO_ENABLED 0
+ENV GOOS linux
 RUN cd /src && go mod init orl-server && go build -o orl-server
 
 FROM alpine:latest
