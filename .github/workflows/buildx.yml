@@ -26,6 +26,7 @@ jobs:
           - streamlink
           - streamlink-git
           - tcd
+          - tcd-git
           - youtube-dl
           - youtube-dl-git
           - youtube-dlc-git
