@@ -17,15 +17,11 @@ jobs:
           - aria2
           - justlog-git
           - h5ai
-          - mopidy
           # - orl-bot
           # - orl-logger
           # - orl-server
           - nginx-autoindex
           - pywal
-          - streamlink
-          - streamlink-git
-          - tcd
           - tcd-git
           - youtube-dl
           - youtube-dl-git
