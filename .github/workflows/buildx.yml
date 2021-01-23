@@ -71,6 +71,6 @@ jobs:
         with:
           context: ${{ steps.docker_args.outputs.context_path }}
           file: ${{ steps.docker_args.outputs.file_path }}
-          platforms: ${{ steps.buildx.outputs.platforms }}
+          platforms: ${{ matrix.platforms }}
           tags: ${{ steps.docker_args.outputs.tag }}
           push: true
