@@ -23,6 +23,7 @@ jobs:
           - nginx-autoindex
           - pywal
           - tcd-git
+          - twitch-recover
           - youtube-dl
           - youtube-dl-git
           - youtube-dlc-git
