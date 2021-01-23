@@ -23,14 +23,15 @@ jobs:
           - nginx-autoindex
           - pywal
           - tcd-git
+          - twitch-recover
           - youtube-dl
           - youtube-dl-git
           - youtube-dlc-git
         platforms:
           - linux/amd64,linux/arm64
-        include:
-          - image: twitch-recover
-            platforms: linux/amd64
+        # include:
+        #   - image: twitch-recover
+        #     platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
