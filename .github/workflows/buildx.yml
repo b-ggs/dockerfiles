@@ -15,7 +15,7 @@ jobs:
       matrix:
         image:
           - aria2
-          - autosub
+          - autosub-git
           - justlog-git
           - h5ai
           # - orl-bot
@@ -24,6 +24,7 @@ jobs:
           - nginx-autoindex
           - pywal
           - tcd-git
+          - twitch-dl
           - twitch-recover
           - youtube-dl
           - youtube-dl-git
