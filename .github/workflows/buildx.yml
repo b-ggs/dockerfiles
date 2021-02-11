@@ -26,6 +26,7 @@ jobs:
           - pywal
           - tcd-git
           - tubeup-git
+          - tubeup-git-patched
           - twitch-dl
           - twitch-recover
           - youtube-dl
