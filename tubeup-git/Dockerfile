@@ -4,7 +4,7 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN apk --no-cache add ffmpeg git \
   && pip3 install --no-cache-dir youtube-dl git+https://github.com/midgleyc/tubeup@null-description-text \
-  && echo "[s3]\n[access] = s3_access\nsecret = s3_secret" > /root/.ia \
+  && echo -e "[s3]\n[access] = s3_access\nsecret = s3_secret" > /root/.ia \
   && apk del git \
   && rm -rf /tmp/*
 
