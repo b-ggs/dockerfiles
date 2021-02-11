@@ -24,6 +24,7 @@ jobs:
           - nginx-autoindex
           - pywal
           - tcd-git
+          - tubeup-git
           - twitch-dl
           - twitch-recover
           - youtube-dl
