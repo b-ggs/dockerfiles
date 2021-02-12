@@ -39,6 +39,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Clone additional repositories
+        # This is for images I want to run do not have arm64 builds
+        run: |
+          git clone https://github.com/awesometic/docker-h5ai h5ai
       - name: Set up Docker args
         id: docker_args
         run: |
