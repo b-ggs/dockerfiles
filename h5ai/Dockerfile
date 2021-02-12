@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ENV H5AI_VERSION 0.29.2
+ENV H5AI_VERSION 0.30.0
 
 RUN apk -U add \
     nginx \
