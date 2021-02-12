@@ -42,7 +42,9 @@ jobs:
       - name: Clone additional repositories
         # This is for images I want to run do not have arm64 builds
         run: |
-          git clone https://github.com/awesometic/docker-h5ai h5ai
+          if [[ "${{ matrix.image }}" == "h5ai" ]]; then
+            git clone https://github.com/awesometic/docker-h5ai h5ai
+          fi
       - name: Set up Docker args
         id: docker_args
         run: |
