@@ -17,7 +17,7 @@ jobs:
           - aria2
           - autosub-git
           - justlog-git
-          - h5ai
+          # - h5ai
           - jq
           # - orl-bot
           # - orl-logger
