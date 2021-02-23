@@ -46,7 +46,7 @@ jobs:
               git clone https://github.com/awesometic/docker-h5ai h5ai
               ;;
             justlog-git)
-              https://github.com/gempir/justlog justlog-git
+              git clone https://github.com/gempir/justlog justlog-git
               ;;
           esac
       - name: Set up Docker args
