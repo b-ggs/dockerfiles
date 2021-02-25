@@ -29,6 +29,7 @@ jobs:
           - tubeup-git
           - twitch-dl
           - twitch-recover
+          - vlmcsd
           - youtube-dl
           - youtube-dl-git
         platforms:
@@ -47,6 +48,9 @@ jobs:
               ;;
             justlog-git)
               git clone https://github.com/gempir/justlog justlog-git
+              ;;
+            vlmcsd)
+              git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd
               ;;
           esac
       - name: Set up Docker args
