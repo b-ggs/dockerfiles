@@ -28,15 +28,16 @@ jobs:
           - tubeup
           - tubeup-git
           - twitch-dl
+          - twitch-downloader-cli
           - twitch-recover
           - vlmcsd
           - youtube-dl
           - youtube-dl-git
         platforms:
           - linux/amd64,linux/arm64
-        # include:
-        #   - image: twitch-recover
-        #     platforms: linux/amd64
+        include:
+          - image: twitch-downloader-cli
+            platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
