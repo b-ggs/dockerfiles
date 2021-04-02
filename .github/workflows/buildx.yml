@@ -31,6 +31,7 @@ jobs:
           - twitch-downloader-cli
           - twitch-recover
           - vlmcsd
+          - vnc-xfce-firefox
           - youtube-dl
           - youtube-dl-git
         platforms:
@@ -49,6 +50,9 @@ jobs:
               ;;
             justlog-git)
               git clone https://github.com/gempir/justlog justlog-git
+              ;;
+            vnc-xfce-firefox)
+              git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox
               ;;
             vlmcsd)
               git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd
