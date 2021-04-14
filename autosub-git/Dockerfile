@@ -5,7 +5,7 @@ RUN apk --no-cache add ffmpeg git \
   && apk del git \
   && rm -rf /tmp/*
 
-WORKDIR ["/data"]
+WORKDIR /data
 
 ENTRYPOINT ["autosub"]
 
