@@ -33,6 +33,7 @@ jobs:
           - vnc-xfce-firefox
           - youtube-dl
           - youtube-dl-git
+          - youtube-dlc-git
         platforms:
           - linux/amd64,linux/arm64
         include:
