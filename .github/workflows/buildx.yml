@@ -46,7 +46,7 @@ jobs:
         run: |
           case "${{ matrix.image }}" in
             h5ai)
-              git clone https://github.com/awesometic/docker-h5ai h5ai
+              git clone https://github.com/b-ggs/docker-h5ai h5ai
               ;;
             justlog-git)
               git clone https://github.com/gempir/justlog justlog-git
