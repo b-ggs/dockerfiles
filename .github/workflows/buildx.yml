@@ -22,6 +22,7 @@ jobs:
           # - orl-bot
           # - orl-logger
           # - orl-server
+          - metabase
           - nginx-autoindex
           - pywal
           - tcd-git
