@@ -32,6 +32,7 @@ jobs:
           - twitch-recover
           - vlmcsd
           - vnc-xfce-firefox
+          - yt-dlp
           - youtube-dl
           - youtube-dl-git
           - youtube-dlc-git
