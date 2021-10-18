@@ -19,7 +19,6 @@ jobs:
           - justlog-git
           - h5ai
           - jq
-          - metabase
           - nginx-autoindex
           - pywal
           - tcd-git
