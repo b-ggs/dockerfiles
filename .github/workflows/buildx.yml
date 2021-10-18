@@ -19,23 +19,18 @@ jobs:
           - justlog-git
           - h5ai
           - jq
-          # - orl-bot
-          # - orl-logger
-          # - orl-server
           - metabase
           - nginx-autoindex
           - pywal
           - tcd-git
           - tubeup
+          - tubeup-fork-git
           - tubeup-git
           - twitch-dl
           - twitch-recover
           - vlmcsd
           - vnc-xfce-firefox
           - yt-dlp
-          - youtube-dl
-          - youtube-dl-git
-          - youtube-dlc-git
         platforms:
           - linux/amd64,linux/arm64
         include:
