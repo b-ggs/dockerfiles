@@ -18,6 +18,7 @@ jobs:
           - autosub-git
           - justlog-git
           - h5ai
+          - internetarchive
           - jq
           - nginx-autoindex
           - pywal
