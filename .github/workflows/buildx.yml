@@ -16,7 +16,6 @@ jobs:
         image:
           - aria2
           - autosub-git
-          - justlog-git
           - h5ai
           - internetarchive
           - jq
@@ -44,9 +43,6 @@ jobs:
           case "${{ matrix.image }}" in
             h5ai)
               git clone https://github.com/b-ggs/docker-h5ai h5ai
-              ;;
-            justlog-git)
-              git clone https://github.com/gempir/justlog justlog-git
               ;;
             vnc-xfce-firefox)
               git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox
