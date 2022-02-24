@@ -8,4 +8,8 @@ RUN apt update \
   && chmod +x /bin/TwitchDownloaderCLI \
   && rm -rf /tmp/*
 
+WORKDIR /data
+
+VOLUME /data
+
 ENTRYPOINT ["TwitchDownloaderCLI"]
