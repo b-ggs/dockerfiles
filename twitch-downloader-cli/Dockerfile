@@ -7,7 +7,7 @@ RUN apt update \
   && apt install -y curl ffmpeg unzip \
   && rm -rf /var/lib/apt/lists/* \
   && if [ "$(uname -m)" = "aarch64" ]; then \
-      export RELEASE_URL="${RELEASE_BASE_URL}/TwitchDownloaderCLI-LinuxArm-x64.zip"; \
+      export RELEASE_URL="${RELEASE_BASE_URL}/TwitchDownloaderCLI-LinuxArm.zip"; \
     else \
       export RELEASE_URL="${RELEASE_BASE_URL}/TwitchDownloaderCLI-Linux-x64.zip"; \
     fi \
