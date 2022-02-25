@@ -27,15 +27,13 @@ jobs:
           - tubeup-fork-git
           - tubeup-git
           - twitch-dl
+          - twitch-downloader-cli
           - twitch-recover
           - vlmcsd
           - vnc-xfce-firefox
           - yt-dlp
         platforms:
           - linux/amd64,linux/arm64
-        include:
-          - image: twitch-downloader-cli
-            platforms: linux/amd64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
