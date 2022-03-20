@@ -16,7 +16,6 @@ jobs:
         image:
           - autosub
           - internetarchive
-          - nginx-autoindex
           - pywal
           - tcd
           - tubeup
@@ -24,7 +23,6 @@ jobs:
           - twitch-recover
           - yt-dlp
           - h5ai
-          - vnc-xfce-firefox
           - vlmcsd
         variant:
           - latest
@@ -48,9 +46,6 @@ jobs:
           case "${{ matrix.image }}" in
             h5ai)
               git clone https://github.com/b-ggs/docker-h5ai h5ai/latest
-              ;;
-            vnc-xfce-firefox)
-              git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox/latest
               ;;
             vlmcsd)
               git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
