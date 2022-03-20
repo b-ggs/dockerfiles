@@ -1,6 +1,6 @@
 FROM python:alpine
 
-RUN apk --no-cache add git \
+RUN apk add --no-cache git \
   && pip install --no-cache-dir tcd \
   && apk del git \
   && rm -rf /tmp/*
