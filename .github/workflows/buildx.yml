@@ -16,26 +16,38 @@ jobs:
         image:
           - ansible
           - aria2
-          - autosub-git
-          - h5ai
+          - autosub
           - internetarchive
           - jq
           - nginx-autoindex
           - pywal
-          - tcd-git
+          - tcd
           - tubeup
-          - tubeup-fork-git
-          - tubeup-git
           - twitch-dl
           - twitch-recover
-          - vlmcsd
-          - vnc-xfce-firefox
           - yt-dlp
+          - h5ai
+          - vnc-xfce-firefox
+          - vlmcsd
         platforms:
           - linux/amd64,linux/arm64
+        variant:
+          - latest
         include:
+          - image: tcd
+            platforms: linux/amd64,linux/arm64
+            variant: fork
+          - image: tubeup
+            platforms: linux/amd64,linux/arm64
+            variant: edge
+          - image: tubeup
+            platforms: linux/amd64,linux/arm64
+            variant: fork
           - image: twitch-downloader-cli
             platforms: linux/amd64
+          - image: yt-dlp
+            platforms: linux/amd64,linux/arm64
+            variant: custom-config
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,29 +55,22 @@ jobs:
         run: |
           case "${{ matrix.image }}" in
             h5ai)
-              git clone https://github.com/b-ggs/docker-h5ai h5ai
+              git clone https://github.com/b-ggs/docker-h5ai h5ai/latest
               ;;
             vnc-xfce-firefox)
-              git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox
+              git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox/latest
               ;;
             vlmcsd)
-              git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd
+              git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
               ;;
           esac
       - name: Set up Docker args
         id: docker_args
         run: |
-          CONTEXT_PATH=./${{ matrix.image }}
+          CONTEXT_PATH=./${{ matrix.image }}/${{ matrix.variant }}
           FILE_PATH=$CONTEXT_PATH/Dockerfile
           IMAGE=bxggs/${{ matrix.image }}
-
-          BRANCH=${GITHUB_REF#refs/heads/}
-
-          if [[ "$BRANCH" == "master" ]]; then
-            TAG=latest
-          else
-            TAG="$(echo $BRANCH | sed -e 's/\//-/g')"
-          fi
+          TAG=${{ matrix.variant }}
 
           echo "::set-output name=context_path::$CONTEXT_PATH"
           echo "::set-output name=file_path::$FILE_PATH"
@@ -90,4 +95,4 @@ jobs:
           file: ${{ steps.docker_args.outputs.file_path }}
           platforms: ${{ matrix.platforms }}
           tags: ${{ steps.docker_args.outputs.tag }}
-          push: true
+          push: ${{ github.ref == "refs/heads/master" }}

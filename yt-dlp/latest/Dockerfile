@@ -1,0 +1,14 @@
+FROM python:alpine
+
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
+  && pip3 install --no-cache-dir yt-dlp \
+  && apk --no-cache add ffmpeg \
+  && apk del .build-deps
+
+WORKDIR /data
+
+VOLUME /data
+
+ENTRYPOINT ["yt-dlp"]
+
+CMD ["--help"]
