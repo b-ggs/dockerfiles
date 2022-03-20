@@ -38,6 +38,8 @@ jobs:
             platforms: linux/amd64
           - image: yt-dlp
             variant: custom-config
+          - image: h5ai
+            variant: fork
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -45,7 +47,14 @@ jobs:
         run: |
           case "${{ matrix.image }}" in
             h5ai)
-              git clone https://github.com/b-ggs/docker-h5ai h5ai/latest
+              case "${{ matrix.variant }}" in
+                latest)
+                  git clone https://github.com/awesometic/docker-h5ai h5ai/latest
+                  ;;
+                fork)
+                  git clone https://github.com/b-ggs/docker-h5ai h5ai/fork
+                  ;;
+              esac
               ;;
             vlmcsd)
               git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
@@ -82,4 +91,4 @@ jobs:
           file: ${{ steps.docker_args.outputs.file_path }}
           platforms: ${{ matrix.platforms }}
           tags: ${{ steps.docker_args.outputs.tag }}
-          push: ${{ github.ref == 'refs/heads/master' }}
+          push: true
