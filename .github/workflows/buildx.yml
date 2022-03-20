@@ -14,11 +14,8 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - ansible
-          - aria2
           - autosub
           - internetarchive
-          - jq
           - nginx-autoindex
           - pywal
           - tcd
@@ -29,25 +26,26 @@ jobs:
           - h5ai
           - vnc-xfce-firefox
           - vlmcsd
-        platforms:
-          - linux/amd64,linux/arm64
         variant:
           - latest
+        platforms:
+          - linux/amd64,linux/arm64
         include:
           - image: tcd
-            platforms: linux/amd64,linux/arm64
             variant: fork
-          - image: tubeup
             platforms: linux/amd64,linux/arm64
+          - image: tubeup
             variant: edge
-          - image: tubeup
             platforms: linux/amd64,linux/arm64
+          - image: tubeup
             variant: fork
+            platforms: linux/amd64,linux/arm64
           - image: twitch-downloader-cli
+            variant: latest
             platforms: linux/amd64
           - image: yt-dlp
-            platforms: linux/amd64,linux/arm64
             variant: custom-config
+            platforms: linux/amd64,linux/arm64
     steps:
       - name: Checkout
         uses: actions/checkout@v2
