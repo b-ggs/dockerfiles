@@ -95,4 +95,4 @@ jobs:
           file: ${{ steps.docker_args.outputs.file_path }}
           platforms: ${{ matrix.platforms }}
           tags: ${{ steps.docker_args.outputs.tag }}
-          push: ${{ github.ref == "refs/heads/master" }}
+          push: ${{ github.ref == 'refs/heads/master' }}
