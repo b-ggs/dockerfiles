@@ -2,7 +2,7 @@ FROM python:alpine
 
 ENV TMP /data
 
-RUN apk --no-cache add ffmpeg \
+RUN apk add --no-cache ffmpeg \
   && pip3 install --no-cache-dir twitch-dl
 
 WORKDIR /data

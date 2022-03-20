@@ -1,8 +1,9 @@
-FROM python:alpine
+FROM python:2-alpine
 
-RUN apk --no-cache add ffmpeg git \
+RUN apk add --no-cache --virtual .build-deps git \
   && pip install --no-cache-dir git+https://github.com/b-ggs/autosub \
-  && apk del git \
+  && apk add --no-cache ffmpeg \
+  && apk del .build-deps \
   && rm -rf /tmp/*
 
 WORKDIR /data

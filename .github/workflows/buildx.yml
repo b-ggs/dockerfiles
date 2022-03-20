@@ -14,28 +14,30 @@ jobs:
       fail-fast: false
       matrix:
         image:
-          - ansible
-          - aria2
-          - autosub-git
-          - h5ai
+          - autosub
           - internetarchive
-          - jq
-          - nginx-autoindex
           - pywal
-          - tcd-git
+          - tcd
           - tubeup
-          - tubeup-fork-git
-          - tubeup-git
           - twitch-dl
           - twitch-recover
-          - vlmcsd
-          - vnc-xfce-firefox
           - yt-dlp
-        platforms:
-          - linux/amd64,linux/arm64
+          - h5ai
+          - vlmcsd
+        variant:
+          - latest
         include:
+          - image: tcd
+            variant: fork
+          - image: tubeup
+            variant: edge
+          - image: tubeup
+            variant: fork
           - image: twitch-downloader-cli
+            variant: latest
             platforms: linux/amd64
+          - image: yt-dlp
+            variant: custom-config
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,29 +45,19 @@ jobs:
         run: |
           case "${{ matrix.image }}" in
             h5ai)
-              git clone https://github.com/b-ggs/docker-h5ai h5ai
-              ;;
-            vnc-xfce-firefox)
-              git clone https://github.com/accetto/ubuntu-vnc-xfce-firefox.git vnc-xfce-firefox
+              git clone https://github.com/b-ggs/docker-h5ai h5ai/latest
               ;;
             vlmcsd)
-              git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd
+              git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
               ;;
           esac
       - name: Set up Docker args
         id: docker_args
         run: |
-          CONTEXT_PATH=./${{ matrix.image }}
+          CONTEXT_PATH=./${{ matrix.image }}/${{ matrix.variant }}
           FILE_PATH=$CONTEXT_PATH/Dockerfile
           IMAGE=bxggs/${{ matrix.image }}
-
-          BRANCH=${GITHUB_REF#refs/heads/}
-
-          if [[ "$BRANCH" == "master" ]]; then
-            TAG=latest
-          else
-            TAG="$(echo $BRANCH | sed -e 's/\//-/g')"
-          fi
+          TAG=${{ matrix.variant }}
 
           echo "::set-output name=context_path::$CONTEXT_PATH"
           echo "::set-output name=file_path::$FILE_PATH"
@@ -74,7 +66,7 @@ jobs:
         id: qemu
         uses: docker/setup-qemu-action@v1
         with:
-          platforms: ${{ matrix.platforms }}
+          platforms: ${{ matrix.platforms || 'linux/amd64,linux/arm64' }}
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
@@ -90,4 +82,4 @@ jobs:
           file: ${{ steps.docker_args.outputs.file_path }}
           platforms: ${{ matrix.platforms }}
           tags: ${{ steps.docker_args.outputs.tag }}
-          push: true
+          push: ${{ github.ref == 'refs/heads/master' }}
