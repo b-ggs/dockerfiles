@@ -89,6 +89,6 @@ jobs:
         with:
           context: ${{ steps.docker_args.outputs.context_path }}
           file: ${{ steps.docker_args.outputs.file_path }}
-          platforms: ${{ matrix.platforms }}
+          platforms: ${{ matrix.platforms || 'linux/amd64,linux/arm64' }}
           tags: ${{ steps.docker_args.outputs.tag }}
           push: true
