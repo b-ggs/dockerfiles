@@ -36,6 +36,9 @@ jobs:
           - image: twitch-downloader-cli
             variant: latest
             platforms: linux/amd64
+          - image: twitch-downloader-cli
+            variant: edge
+            platforms: linux/amd64
           - image: yt-dlp
             variant: custom-config
           - image: h5ai
