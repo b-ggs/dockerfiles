@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.10-alpine
 
 RUN apk add --no-cache git \
   && pip install --no-cache-dir git+https://github.com/b-ggs/Twitch-Chat-Downloader \

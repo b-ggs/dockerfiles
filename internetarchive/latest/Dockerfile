@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.10-alpine
 
 RUN pip3 install --no-cache-dir internetarchive \
   && echo -e "[s3]\naccess = s3_access\nsecret = s3_secret" > /root/.ia

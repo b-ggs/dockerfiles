@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.10-alpine
 
 RUN apk add --no-cache imagemagick \
   && pip3 install --no-cache-dir pywal
