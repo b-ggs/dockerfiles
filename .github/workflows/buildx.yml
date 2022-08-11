@@ -18,6 +18,7 @@ jobs:
           - internetarchive
           - pywal
           - tcd
+          - terraform
           - tubeup
           - twitch-dl
           - twitch-recover
@@ -29,6 +30,8 @@ jobs:
         include:
           - image: tcd
             variant: fork
+          - image: terraform
+            variant: 1.2.2
           - image: tubeup
             variant: edge
           - image: tubeup
