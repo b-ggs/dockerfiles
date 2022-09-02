@@ -41,7 +41,10 @@ jobs:
             variant: latest
             platforms: linux/amd64
           - image: twitch-downloader-cli
-            variant: edge
+            variant: 1.40.9
+            platforms: linux/amd64
+          - image: twitch-downloader-cli
+            variant: 1.50.0
             platforms: linux/amd64
           - image: yt-dlp
             variant: custom-config
