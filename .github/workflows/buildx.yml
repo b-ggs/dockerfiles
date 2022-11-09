@@ -31,17 +31,12 @@ jobs:
         include:
           - image: tcd
             variant: fork
-          - image: terraform
-            variant: 1.2.2
           - image: tubeup
             variant: edge
           - image: tubeup
             variant: fork
           - image: twitch-downloader-cli
             variant: latest
-            platforms: linux/amd64
-          - image: twitch-downloader-cli
-            variant: 1.50.5
             platforms: linux/amd64
           - image: yt-dlp
             variant: custom-config
