@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 ENV RELEASE_NAME 1.51.1
-ENV DOWNLOAD_URL https://github.com/lay295/TwitchDownloader/releases/download/${RELEASE_NAME}/TwitchDownloaderCLI-Linux-x64.zip
+ENV DOWNLOAD_URL https://github.com/lay295/TwitchDownloader/releases/download/${RELEASE_NAME}/TwitchDownloaderCLI-${RELEASE_NAME}-Linux-x64.zip
 
 RUN apt update \
   && apt install -y curl ffmpeg unzip \
