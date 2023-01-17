@@ -19,9 +19,7 @@ jobs:
           - h5ai
           - internetarchive
           - pywal
-          - streamdvr
           - tcd
-          - terraform
           - tubeup
           - twitch-dl
           - twitch-recover
@@ -58,9 +56,6 @@ jobs:
                   git clone https://github.com/b-ggs/docker-h5ai h5ai/fork
                   ;;
               esac
-              ;;
-            streamdvr)
-              git clone https://github.com/purrsevere/docker-streamdvr streamdvr/latest
               ;;
             vlmcsd)
               git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
