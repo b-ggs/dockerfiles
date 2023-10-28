@@ -28,8 +28,6 @@ jobs:
         variant:
           - latest
         include:
-          - image: h5ai
-            variant: fork
           - image: tcd
             variant: fork
           - image: tubeup
@@ -47,16 +45,16 @@ jobs:
       - name: Clone additional repositories
         run: |
           case "${{ matrix.image }}" in
-            h5ai)
-              case "${{ matrix.variant }}" in
-                latest)
-                  git clone https://github.com/awesometic/docker-h5ai h5ai/latest
-                  ;;
-                fork)
-                  git clone https://github.com/b-ggs/docker-h5ai h5ai/fork
-                  ;;
-              esac
-              ;;
+            # h5ai)
+            #   case "${{ matrix.variant }}" in
+            #     latest)
+            #       git clone https://github.com/awesometic/docker-h5ai h5ai/latest
+            #       ;;
+            #     fork)
+            #       git clone https://github.com/b-ggs/docker-h5ai h5ai/fork
+            #       ;;
+            #   esac
+            #   ;;
             vlmcsd)
               git clone https://github.com/mikolatero/docker-vlmcsd vlmcsd/latest
               ;;
