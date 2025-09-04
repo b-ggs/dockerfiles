@@ -1,7 +1,7 @@
 FROM python:3.12-alpine
 
 RUN apk add --no-cache --virtual .build-deps gcc musl-dev \
-  && pip3 install --no-cache-dir yt-dlp \
+  && pip3 install --no-cache-dir yt-dlp[default,curl-cffi] \
   && apk add --no-cache ffmpeg \
   && apk del .build-deps
 
